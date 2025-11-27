@@ -15,7 +15,7 @@ const StartScreen = ({onStart}) => {
            
                 <h2> Elegir dificultad:  </h2>
                 
-                { difficulties != null && difficulties.map(dif => {
+                {difficulties.map(dif => {
                     
                     return(<button key={dif} onClick={() => onStart(dif)} className='difBtn' >
                         {dif}

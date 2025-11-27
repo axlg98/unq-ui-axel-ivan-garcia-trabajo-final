@@ -1,8 +1,8 @@
 import api from './api'
 
-//Brinda las preguntas
+//SE obtienen las preguntas
 const getQuestions = async(difficulty) =>{
-    const res = await api.get('/api/questions',{params: difficulty});
+    const res = await api.get('/api/questions',{params: {difficulty}});
     return res.data;
 }
 
