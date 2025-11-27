@@ -2,7 +2,7 @@ import api from './api'
 
 //PAra saber si la respuesta es válida o no.
 const sendAnswer = async(questionId,option) => {
-    const res = await api.post('/api/answer',{questionId,option});
+    const res = await api.post('/api/answer',{params: {questionId,option}});
     return res.data;
 }
 
