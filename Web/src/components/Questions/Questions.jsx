@@ -6,23 +6,29 @@ const Question = ({question,onAnswer}) => {
     const[correctAnswer,setCorrectAnswer] = useState(null);
     const[showResult,setShowResult] = useState(false);
 
-    const options = [question.option1, question.option2, question.option3].filter(Boolean);
+    const allOps = [
+            {key:'option1',value:question.option1},
+            {key:'option2',value:question.option2},
+            {key:'option3',value:question.option3},
+            {key:'option4',value:question.option4},
+    ];
 
-    const handleAnswer = (option) => {
+    const handleAnswer = async(option) => {
         setOptionSelected(option);
         setShowResult(true);
-
-        const result = onAnswer(question.id,option);
-        setCorrectAnswer(result.correctAnswer);
+        
+        const result = await onAnswer(question.id,option);
+        setCorrectAnswer(result.answer);
+        return result;
     }
 
     //PREGUNTAR ESTO EL MIÉRCOLES SI ESTÁ PERMITIDO USAR UNA const para CSS con el botón.
     const getBtnClass = (option) => {
         if(!showResult) return 'optionBtn';
 
-        if(option === correctAnswer) return 'optionBtn correct'
+        if(option == correctAnswer) return 'optionBtn correct'
 
-        if(option === optionSelected && option !== correctAnswer) return 'optionBtn incorrect';
+        if(option == optionSelected && option != correctAnswer) return 'optionBtn incorrect';
 
         return 'optionBtn disabled';
     }
@@ -31,13 +37,13 @@ const Question = ({question,onAnswer}) => {
         <div className="container">
             <h3>{question.question}</h3>
             <div className="options">
-                {options.map((op) => (
-                <button key={op} 
-                        onClick={() => handleAnswer(op)}
-                        disabled={showResult}
-                        className={getBtnClass(op)}
+                {allOps.map((item) => (
+                <button key={item.key} 
+                        onClick={() => handleAnswer(item.key)}
+                        
+                        className={getBtnClass(item.value)}
                 >
-                    {op}
+                    {item.value}
                 </button>
             ))}
 

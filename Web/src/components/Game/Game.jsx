@@ -24,10 +24,13 @@ const GameScreen = ({difficulty , onFinish}) => {
 
     const handleAnswer = async(questionId,option) => {
         const result = await sendAnswer(questionId, option);
-        if(result.correct){
+        if(result.answer){
             setCorrectCount((c) => c+1);
+            alert('Opción correcta!');
         }
-        setCanContinue(true);
+         setCanContinue(true);
+        console.log('Resultado de la respuesta:', result);
+        return result;
     };
 
     const handleNext = () => {
