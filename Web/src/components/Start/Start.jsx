@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import getDifficulties from '../../services/difficulties';
+import './Start.css'
 
 
 const StartScreen = ({onStart}) => {
@@ -11,16 +12,17 @@ const StartScreen = ({onStart}) => {
     
     return(
         <div>
-            <h1> Preguntados </h1>
+            <h1 className='tittleStart'> Preguntados </h1>
            
-                <h2> Elegir dificultad:  </h2>
+                <h2 className='difficulty'> Elegir dificultad:  </h2>
                 
-                {difficulties.map(dif => {
-                    
-                    return(<button key={dif} onClick={() => onStart(dif)} className='difBtn' >
-                        {dif}
-                    </button>)
-                })}
+                {difficulties.map(dif => (
+                    <div className='containerBtn' >
+                        <button key={dif} onClick={() => onStart(dif)} className='difBtn' >
+                            {dif}
+                        </button>
+                    </div>
+                ))}
         </div>
     )
 }
