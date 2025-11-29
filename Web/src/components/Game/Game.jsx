@@ -2,6 +2,7 @@ import getQuestions from '../../services/questions';
 import sendAnswer from '../../services/answer';
 import Question from '../Questions/Questions';
 import { useEffect, useState } from 'react';
+import './Game.css'
 
 const GameScreen = ({difficulty , onFinish}) => {
     const[questions,setQuestions] = useState([]);
@@ -36,12 +37,15 @@ const GameScreen = ({difficulty , onFinish}) => {
     }
 
     return(
-        <div>
-            <h2>Dificultad: {difficulty} </h2>
-            <h3>Pregunta: {index+1} de {questions.length} </h3>
+        <div className='container'>
+            <div className='divContainer' >
+                <h2 className='tittle'>Dificultad: {difficulty} </h2>
+                <h3 className='tittle' >Pregunta: {index+1} de {questions.length} </h3>
+            </div>
             <Question 
                 question={current}
                 onAnswer={handleAnswer}
+                countCorrect={correctCount}
             />
             {canContinue && (
                 <button onClick={handleNext} >

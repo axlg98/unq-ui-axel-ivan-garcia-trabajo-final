@@ -6,6 +6,7 @@ const Question = ({question,onAnswer}) => {
     const[correctAnswer,setCorrectAnswer] = useState(null);
     const[showResult,setShowResult] = useState(false);
 
+
     const allOps = [
             {key:'option1',value:question.option1},
             {key:'option2',value:question.option2},
@@ -20,13 +21,10 @@ const Question = ({question,onAnswer}) => {
     }, [question.id]);
 
     const handleAnswer = async(option) => {
-        console.log("Opción recibida en handleAnswer:", option);
         const result = await onAnswer(question.id,option);
         setShowResult(true);
         setCorrectAnswer(result.answer);
         setOptionSelected(option);
-        console.log("optionSelected: " ,optionSelected);
-        console.log("correctAnswer: " ,correctAnswer);
         //return result;
     }
 
@@ -34,14 +32,14 @@ const Question = ({question,onAnswer}) => {
     const getBtnClass = (option) => {
         if(!showResult) return 'optionBtn';
 
-        // 1. Si la opción seleccionada es la actual Y el resultado fue CORRECTO
-        if(option.key == optionSelected && correctAnswer) {
-            return 'optionBtn correct';
-        }
-
-        // 2. Si la opción seleccionada es la actual Y el resultado fue INCORRECTO
-        if(option.key == optionSelected && correctAnswer) {
-            return 'optionBtn incorrect';
+        if (option === optionSelected) {
+            if (correctAnswer) {
+                //Si es correcto, el botón cambia a verde
+                return 'optionBtn correct'; 
+            } else {
+                //Si es incorrecto, el botón cambia a rojo
+                return 'optionBtn incorrect';
+            }
         }
 
         // 3. El resto de las opciones se desactivan.
@@ -50,7 +48,7 @@ const Question = ({question,onAnswer}) => {
 
     return(
         <div className="container">
-            <h3>{question.question}</h3>
+            <h3 className="question" >{question.question}</h3>
             <div className="options">
                 {allOps.map((item) => (
                 <button key={item.key} 
@@ -65,7 +63,7 @@ const Question = ({question,onAnswer}) => {
             {showResult && (
                 
                 <p className={correctAnswer ? 'result correct-text' : 'result incorrect-text'}>
-                    {correctAnswer ? '¡Correcto! ✅' : '❌ Incorrecto'}
+                    {correctAnswer ? '✅ Correcto ' : '❌ Incorrecto'}
                 </p>
             )}
             </div>

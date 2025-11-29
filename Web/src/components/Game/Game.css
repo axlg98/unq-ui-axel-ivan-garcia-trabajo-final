@@ -1,0 +1,11 @@
+.divContainer{
+    display: grid;
+    justify-content: center;
+}
+
+
+.tittle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
