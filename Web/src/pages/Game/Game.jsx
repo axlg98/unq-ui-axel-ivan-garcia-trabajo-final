@@ -7,7 +7,6 @@ const Game = () => {
     const[screen,setScreen] = useState('Start');
     const[difficulty,setDifficulty] = useState(null);
     const[correctCount,setCorrectCount] = useState(0);
-    const[totalQuestions,setTotalQuestions] = useState(0);
 
     const startGame = (diff) =>{
         setDifficulty(diff);
@@ -15,9 +14,8 @@ const Game = () => {
         setScreen('Game');
     };
 
-    const finishGame = (correct,total) => {
+    const finishGame = (correct) => {
         setCorrectCount(correct);
-        setTotalQuestions(total);
         setScreen('Result');
     }
     return(
@@ -32,7 +30,6 @@ const Game = () => {
 
             {screen == 'Result' && (
                 <ResultScreen 
-                  onTotalQuestions={totalQuestions}
                   correct={correctCount}
                   onRestart={()=>setScreen('Start')}
                 />

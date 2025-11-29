@@ -68,7 +68,6 @@ const Question = ({question,onAnswer}) => {
                     {correctAnswer ? '¡Correcto! ✅' : '❌ Incorrecto'}
                 </p>
             )}
-            {console.log(showResult)}
             </div>
         </div>
     )

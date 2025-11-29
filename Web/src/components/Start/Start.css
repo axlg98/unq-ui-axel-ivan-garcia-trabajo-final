@@ -1,3 +1,27 @@
+body{
+    background-color: #32a110;
+}
+
 .difBtn{
-    background-color: black;
+    padding: 15px 20px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.difficulty, .tittleStart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerBtn{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
