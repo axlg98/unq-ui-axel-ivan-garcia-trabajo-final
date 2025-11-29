@@ -9,3 +9,13 @@
     justify-content: center;
     align-items: center;
 }
+
+.optionBtn{
+    padding: 15px 20px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}

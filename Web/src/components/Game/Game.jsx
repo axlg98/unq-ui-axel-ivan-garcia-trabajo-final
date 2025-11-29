@@ -48,7 +48,7 @@ const GameScreen = ({difficulty , onFinish}) => {
                 countCorrect={correctCount}
             />
             {canContinue && (
-                <button onClick={handleNext} >
+                <button onClick={handleNext} className='optionBtn' >
                     {index + 1  === questions.length ? 'Ver Resultados' : 'Siguiente'}
                 </button>
             )}
