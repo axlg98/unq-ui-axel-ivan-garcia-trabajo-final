@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './Questions.css'
 
 const Question = ({question,onAnswer}) => {
@@ -13,23 +13,38 @@ const Question = ({question,onAnswer}) => {
             {key:'option4',value:question.option4},
     ];
 
+    useEffect(() => {
+        setOptionSelected(null);
+        setCorrectAnswer(null);
+        setShowResult(false);
+    }, [question.id]);
+
     const handleAnswer = async(option) => {
-        setOptionSelected(option);
-        setShowResult(true);
-        
+        console.log("Opción recibida en handleAnswer:", option);
         const result = await onAnswer(question.id,option);
+        setShowResult(true);
         setCorrectAnswer(result.answer);
-        return result;
+        setOptionSelected(option);
+        console.log("optionSelected: " ,optionSelected);
+        console.log("correctAnswer: " ,correctAnswer);
+        //return result;
     }
 
     //PREGUNTAR ESTO EL MIÉRCOLES SI ESTÁ PERMITIDO USAR UNA const para CSS con el botón.
     const getBtnClass = (option) => {
         if(!showResult) return 'optionBtn';
 
-        if(option == correctAnswer) return 'optionBtn correct'
+        // 1. Si la opción seleccionada es la actual Y el resultado fue CORRECTO
+        if(option.key == optionSelected && correctAnswer) {
+            return 'optionBtn correct';
+        }
 
-        if(option == optionSelected && option != correctAnswer) return 'optionBtn incorrect';
+        // 2. Si la opción seleccionada es la actual Y el resultado fue INCORRECTO
+        if(option.key == optionSelected && correctAnswer) {
+            return 'optionBtn incorrect';
+        }
 
+        // 3. El resto de las opciones se desactivan.
         return 'optionBtn disabled';
     }
 
@@ -40,18 +55,20 @@ const Question = ({question,onAnswer}) => {
                 {allOps.map((item) => (
                 <button key={item.key} 
                         onClick={() => handleAnswer(item.key)}
-                        
-                        className={getBtnClass(item.value)}
+                        disabled={showResult}
+                        className={getBtnClass(item.key)}
                 >
                     {item.value}
                 </button>
             ))}
 
             {showResult && (
-                <p className={optionSelected === correctAnswer ? 'result correct-text' : 'result incorrect-text'}>
-                    {optionSelected === correctAnswer ? '¡Correcto! ✅' : '❌ Incorrecto'}
+                
+                <p className={correctAnswer ? 'result correct-text' : 'result incorrect-text'}>
+                    {correctAnswer ? '¡Correcto! ✅' : '❌ Incorrecto'}
                 </p>
             )}
+            {console.log(showResult)}
             </div>
         </div>
     )

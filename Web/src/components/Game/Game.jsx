@@ -26,20 +26,21 @@ const GameScreen = ({difficulty , onFinish}) => {
         const result = await sendAnswer(questionId, option);
         if(result.answer){
             setCorrectCount((c) => c+1);
-            alert('Opción correcta!');
+            //alert('Opción correcta!');
         }
-         setCanContinue(true);
+        setCanContinue(true);
         console.log('Resultado de la respuesta:', result);
         return result;
     };
 
     const handleNext = () => {
           if(index + 1 === questions.length){
-            onFinish(correctCount ,questions.length);
-        }else{
-            setIndex(index+1);
-            setCanContinue(false);
-        }
+              onFinish(correctCount ,questions.length);
+            }else{
+              setIndex(index+1);
+              setCanContinue(false);
+              //setCanContinue(true);
+          }
     }
 
     return(
