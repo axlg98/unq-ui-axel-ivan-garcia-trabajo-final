@@ -10,6 +10,7 @@ body{
     background-color: white;
     cursor: pointer;
     transition: all 0.3s ease;
+    flex-grow: 1; 
 }
 
 .difficulty, .tittleStart{
@@ -17,6 +18,8 @@ body{
     justify-content: center;
     align-items: center;
     margin: 5vh 0;
+    text-align: center; 
+    padding: 0 10px; 
 }
 
 .containerBtn{
@@ -26,6 +29,8 @@ body{
     flex-direction: row;
     gap: 10px;
     margin-top: 5vh;
+    flex-wrap: wrap; 
+    padding: 0 15px; 
 }
 
 .containerImg{
@@ -36,6 +41,29 @@ body{
 }
 
 .imgPreg{
-    height:30%;
-    width: 30%;
+    max-width: 80vw; 
+    width: auto;
+}
+
+@media (min-width: 768px) {
+    
+    .containerBtn{
+        max-width: 600px; 
+        margin: 5vh auto 0; 
+        flex-wrap: nowrap; 
+    }
+    .difBtn {
+        
+        flex-grow: 0; 
+        width: 150px;
+    }
+    .imgPreg{
+        width: 300px;
+        max-width: 30vw;
+    }
+    .startScreenContent { 
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+    }
 }
