@@ -6,7 +6,6 @@ const Question = ({question,onAnswer}) => {
     const[correctAnswer,setCorrectAnswer] = useState(null);
     const[showResult,setShowResult] = useState(false);
 
-
     const allOps = [
             {key:'option1',value:question.option1},
             {key:'option2',value:question.option2},
@@ -28,22 +27,22 @@ const Question = ({question,onAnswer}) => {
         //return result;
     }
 
-    //PREGUNTAR ESTO EL MIÉRCOLES SI ESTÁ PERMITIDO USAR UNA const para CSS con el botón.
     const getBtnClass = (option) => {
         if(!showResult) return 'optionBtn';
 
         if (option === optionSelected) {
             if (correctAnswer) {
-                //Si es correcto, el botón cambia a verde
                 return 'optionBtn correct'; 
             } else {
-                //Si es incorrecto, el botón cambia a rojo
                 return 'optionBtn incorrect';
             }
         }
 
-        // 3. El resto de las opciones se desactivan.
         return 'optionBtn disabled';
+    }
+
+    const isCorrect = () =>{
+        return correctAnswer ? 'result correct-text' : 'result incorrect-text';
     }
 
     return(
@@ -61,8 +60,7 @@ const Question = ({question,onAnswer}) => {
             ))}
 
             {showResult && (
-                
-                <p className={correctAnswer ? 'result correct-text' : 'result incorrect-text'}>
+                <p className={isCorrect()}>
                     {correctAnswer ? '✅ Correcto ' : '❌ Incorrecto'}
                 </p>
             )}

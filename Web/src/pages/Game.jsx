@@ -1,6 +1,6 @@
-import ResultScreen from '../../components/Results/Results';
-import StartScreen from '../../components/Start/Start';
-import GameScreen from '../../components/Game/Game';
+import ResultScreen from '../components/Results/Results';
+import StartScreen from '../components/Start/Start';
+import GameScreen from '../components/Game/Game';
 import { useState } from 'react';
 
 const Game = () => {

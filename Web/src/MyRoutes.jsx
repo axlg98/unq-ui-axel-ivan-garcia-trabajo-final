@@ -1,5 +1,5 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import Game from './pages/Game/Game';
+import Game from './pages/Game';
 
 function MyRoutes(){
     return (
