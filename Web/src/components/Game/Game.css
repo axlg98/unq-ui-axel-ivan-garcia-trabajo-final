@@ -1,5 +1,4 @@
 .divContainer{
-    display: grid;
     justify-content: center;
 }
 
@@ -17,4 +16,8 @@
     background-color: white;
     cursor: pointer;
     transition: all 0.3s ease;
+}
+
+.divHead{
+    gap: 10px;
 }

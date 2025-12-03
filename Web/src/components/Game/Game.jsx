@@ -39,7 +39,10 @@ const GameScreen = ({difficulty , onFinish}) => {
     return(
         <div className='container'>
             <div className='divContainer' >
-                <h2 className='tittle'>Dificultad: {difficulty} </h2>
+                <div className='divHead'>
+                    <h2 className='tittle'>Dificultad: {difficulty} </h2>
+                    <h3 className='tittle'>correctas: {correctCount} </h3>
+                </div>
                 <h3 className='tittle' >Pregunta: {index+1} de {questions.length} </h3>
             </div>
             <Question 
