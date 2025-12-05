@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import getDifficulties from '../../services/difficulties';
 import './Start.css'
 import preguntados from '../../assets/preguntados.png'
+import { Link } from 'react-router';
 
 
-const StartScreen = ({onStart}) => {
+const Start = () => {
     const[difficulties,setDificulties] = useState([]);
 
     useEffect(() => {
@@ -22,9 +23,9 @@ const StartScreen = ({onStart}) => {
 
                 <div className='containerBtn' >
                     {difficulties.map(dif => (
-                            <button key={dif} onClick={() => onStart(dif)} className='difBtn' >
+                            <Link key={dif}  className='difBtn' to={`/game/difficulty/${dif}`} >
                                 {dif}
-                            </button>
+                            </Link>
                     ))}
                 </div>
             </div>
@@ -35,4 +36,4 @@ const StartScreen = ({onStart}) => {
     )
 }
 
-export default StartScreen;
+export default Start;

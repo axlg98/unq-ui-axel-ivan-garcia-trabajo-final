@@ -1,41 +1,39 @@
-import ResultScreen from '../components/Results/Results';
-import StartScreen from '../components/Start/Start';
-import GameScreen from '../components/Game/Game';
 import { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import GameScreen from '../components/Game/Game';
+import ResultScreen from '../components/Results/Results';
 
 const Game = () => {
-    const[screen,setScreen] = useState('Start');
-    const[difficulty,setDifficulty] = useState(null);
-    const[correctCount,setCorrectCount] = useState(0);
+    const { dif } = useParams(); 
+    const navigate = useNavigate();
 
-    const startGame = (diff) =>{
-        setDifficulty(diff);
-        setCorrectCount(0);
-        setScreen('Game');
-    };
+    const [correctCount, setCorrectCount] = useState(0);
+    const [finished, setFinished] = useState(false);
 
+    if (!dif) {
+        navigate('/');
+    }
+    
     const finishGame = (correct) => {
         setCorrectCount(correct);
-        setScreen('Result');
-    }
-    return(
-        <>
-            {screen == 'Start' && <StartScreen onStart={startGame}/>}
-            {screen == 'Game' && (
-                <GameScreen 
-                  difficulty={difficulty} 
-                  onFinish={finishGame}
-                />
-            )}
+        setFinished(true);
+    };
 
-            {screen == 'Result' && (
-                <ResultScreen 
-                  correct={correctCount}
-                  onRestart={()=>setScreen('Start')}
-                />
+    const restartGame = () => {
+        setFinished(false);
+        setCorrectCount(0);
+        navigate('/')
+    };
+
+    return (
+        <>
+            {!finished ? (
+                <GameScreen difficulty={dif} onFinish={finishGame} />
+            ) : (
+                <ResultScreen correct={correctCount} onRestart={restartGame} />
             )}
         </>
-    )
-}
+    );
+};
 
 export default Game;
