@@ -8,10 +8,10 @@ El proyecto es una implementación sobre el juego de Preguntados. Donde el juego
 
 1. **Lo primero que hay que hacer es clonar el repositorio**
     - Lo primero es instalar GIT, si no lo tienes instalado. [Instalar GIT](https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Instalaci%C3%B3n-de-Git)
-    - Una vez instalado, abrir la terminal y poner git <clone> .En "<clone>" poner el URL del proyecto.
+    - Una vez instalado, abrir la terminal y poner git clone "repositorio". En "repositorio" poner el URL del proyecto.
 
 2. **Descargar Node**
-   - Para saber si tiene instalado Node Js, abrir la terminal y utilizar el comando "node --version" , si aparece la versión, está instalado.
+   - Para saber está instalado Node, abrir terminal y escribir "node --version" ó "node -v", si aparece la versión, está instalado.
    - Si no tiene instalado Node.js [Descargar Node](https://nodejs.org/es/download)
 
 3. **Ir a la ruta del repositorio**
