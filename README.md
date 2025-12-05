@@ -35,5 +35,5 @@ El proyecto es una implementación sobre el juego de Preguntados. Donde el juego
    npm run dev
    ```
 6. **Abrir la página**
-   - Luego de ejecutar el comando del `punto 5` ir a la siguiente página listo para jugar: [Preguntados](http://localhost:5173/)
+   - Luego de ejecutar el comando del `punto 5` ir a la siguiente página listo para jugar: [http://localhost:5173/](http://localhost:5173/)
    - Si el port no es `5173` en la cónsola donde se ejecutó el comando anterior, indica el port.
